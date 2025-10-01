@@ -2,17 +2,22 @@ package sphis.mouseflickgame;
 
 import flixel.FlxG;
 import flixel.math.FlxPoint;
-import flixel.util.FlxSignal;
 
 class MouseFlick
 {
 	public var previousMousePosition:FlxPoint = new FlxPoint();
 	public var currentMousePosition:FlxPoint = new FlxPoint();
 
-	public static var FLICK_MINIMUM_X_DISTANCE:Float = 500;
-	public static var FLICK_MINIMUM_Y_DISTANCE:Float = 500;
+	public var FLICK_MINIMUM_X_DISTANCE:Float = 500;
+	public var FLICK_MINIMUM_Y_DISTANCE:Float = 500;
 
-	public static var FLICK_EVENT:(xDistance:Float, yDistance:Float) -> Void;
+	public var FLICK_EVENT:(xDistance:Float, yDistance:Float) -> Void;
+
+	public function new(xMinDistance:Float = 500, yMinDistance:Float = 500)
+	{
+		FLICK_MINIMUM_X_DISTANCE = xMinDistance;
+		FLICK_MINIMUM_Y_DISTANCE = yMinDistance;
+	}
 
 	public function update()
 	{
