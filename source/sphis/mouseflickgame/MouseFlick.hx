@@ -12,7 +12,7 @@ class MouseFlick
 	public static var FLICK_MINIMUM_X_DISTANCE:Float = 500;
 	public static var FLICK_MINIMUM_Y_DISTANCE:Float = 500;
 
-	public static var FLICK_EVENT:FlxSignal = new FlxSignal();
+	public static var FLICK_EVENT:(xDistance:Float, yDistance:Float) -> Void;
 
 	public function update()
 	{
@@ -25,9 +25,9 @@ class MouseFlick
 		{
 			currentMousePosition.set(FlxG.mouse.x, FlxG.mouse.y);
 
-			if (((currentMousePosition.x - previousMousePosition.x) > FLICK_MINIMUM_X_DISTANCE)
-				|| ((currentMousePosition.y - previousMousePosition.y) > FLICK_MINIMUM_Y_DISTANCE))
-				FLICK_EVENT.dispatch();
+			if ((Math.abs(currentMousePosition.x - previousMousePosition.x) > FLICK_MINIMUM_X_DISTANCE)
+				|| (Math.abs(currentMousePosition.y - previousMousePosition.y) > FLICK_MINIMUM_Y_DISTANCE))
+				FLICK_EVENT((currentMousePosition.x - previousMousePosition.x), (currentMousePosition.y - previousMousePosition.y));
 		}
 	}
 }
