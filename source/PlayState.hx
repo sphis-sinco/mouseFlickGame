@@ -7,7 +7,7 @@ using Std;
 
 class PlayState extends FlxState
 {
-	public var flick:MouseFlick = new MouseFlick(500, 500);
+	public var flick:MouseFlick = new MouseFlick();
 
 	override public function create()
 	{
